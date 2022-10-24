@@ -26,7 +26,7 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            if (await UserExists(registerDto.UserName)) return BadRequest("UserName is Taken");
+            if (await UserExists(registerDto.UserName)) return BadRequest("Username is Taken");
 
             using var hmac = new HMACSHA512(); 
 
@@ -42,7 +42,7 @@ namespace API.Controllers
 
             return new UserDto 
             {
-                UserName = user.UserName,
+                Username = user.UserName,
                 Token = _tokenService.CreateToken(user)
             };
         }
@@ -71,7 +71,7 @@ namespace API.Controllers
 
              return new UserDto 
             {
-                UserName = user.UserName,
+                Username = user.UserName,
                 Token = _tokenService.CreateToken(user)
             };
        }
