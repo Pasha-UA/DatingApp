@@ -2,8 +2,8 @@
   <div class="container">
     <a class="navbar-brand" routerLink="/">Dating App</a>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ng-container *ngIf="accountService.currentUser$ | async">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <ng-container *ngIf="accountService.currentUser$ | async">
           <li class="nav-item">
             <a class="nav-link" routerLink="/members" routerLinkActive="active">Matches</a>
           </li>
@@ -13,11 +13,14 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
           </li>
-        </ul>
-      </ng-container>
-
+        </ng-container>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/errors" routerLinkActive="active">Test Errors</a>
+        </li>
+      </ul>
       <div class="dropdown" *ngIf="(this.accountService.currentUser$ | async) as _user" dropdown>
-        <a class="dropdown-toggle text-light" dropdownToggle aria-expanded="false">Welcome {{_user.username | titlecase}}</a>
+        <a class="dropdown-toggle text-light" dropdownToggle aria-expanded="false">Welcome {{_user.username |
+          titlecase}}</a>
         <ul class="dropdown-menu mt-3" *dropdownMenu="">
           <li><a class="dropdown-item">Edit Profile</a></li>
           <li>
